@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blogs</title>
+  <style>
+  </style>
+
+  <%- include("../partials/bootstrap.ejs") %>
+</head>
+
+<body>
+  <%- include('../partials/header.ejs') %>
+
+  
+  <div class="container mt-4 ">
+    <h1 class="mb-4">Blog Articles</h1>
+    <a href="/blogs/newBlog" class="btn btn-success">New Blog</a>
+    
+    <% if(locals?.msg){%>
+      <h3 class="my-4"><%= locals?.msg%> </h3>
+    <%} %>
+    
+    <% if( locals?.blogsArray!=null || false) {%>
+    <% blogsArray.forEach(blog => { %>
+      <div class="card mt-4 shadow rounded p-2">
+        <div class="card-body">
+          <h4 class="card-title"><%= blog.title %></h4>
+          <div class="card-subtitle text-muted mb-2">
+            <%= blog.createdAt.toLocaleString() %>
+          </div>
+          <div class="card-text mb-2"><%= blog.snippet%></div>
+          <a href="./show/<%= blog._id%>" class="btn btn-primary">Read More</a>
+          <a href="./edit/<%= blog._id %>" class="btn btn-info">Edit</a>
+          <form action="./<%= blog._id%>?_method=DELETE" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+      </div>
+    <% });} %>
+
+    <div class="page-links my-4">
+      <% if(locals?.blogsArray!=null || false){%>
+      <span class="fs-5 mx-4">Page No</span> 
+      <% }%>
+      <% for(let i=1;i<locals.pages+1;i++){%>
+        <%if(i!=locals.pageNo){%>
+        <a class="btn btn-success" href="./page-<%=i%>"><%=i%></a>
+        <% }else{ %>
+        <a class="btn btn-secondary" href="./page-<%=i%>"><%=i%></a>
+      <%}}%>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
+

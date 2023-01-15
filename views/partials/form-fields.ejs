@@ -1,0 +1,15 @@
+<div class="form-group mb-2">
+    <label for="title">Title</label>
+    <input required value="<%= locals.blog?.title %>" type="text" name="title" id="title" class="form-control fs-5">
+  </div>
+  <div class="form-group mb-2">
+    <label for="description">Snippet</label>
+    <textarea name="snippet" id="description" required class="form-control fs-5"><%= locals.blog?.snippet %></textarea>
+  </div>
+  <div class="form-group mb-2">
+    <label for="article">Article</label>
+    <textarea required name="body" id="article" class="form-control fs-5"><%= locals.blog?.body %></textarea>
+  </div>
+  
+  <a href="/" class="btn btn-secondary">Cancel</a>
+  <button type="submit" class="btn btn-primary">Save</button>

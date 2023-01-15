@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create New Blog</title>
+    <%- include("../partials/bootstrap.ejs") %>
+  </head>
+  <body>
+    <%- include('../partials/header.ejs') %>
+    <div class="container mt-4">
+      <h1 class="mb-4">New Article</h1>
+
+      <% if(locals?.errMsg){ %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong><%= locals.errMsg.title %></strong> <%= locals.errMsg.body %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <%}%>
+
+      <form action="/blogs/newBlog" class="fs-3" method="POST">
+        <%- include("../partials/form-fields.ejs") %>
+    </div>
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

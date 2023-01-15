@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Blog</title>
+    <%- include("../partials/bootstrap.ejs") %>
+</head>
+<body>
+
+    <%- include('../partials/header.ejs') %>
+
+    <div class="container mt-3 mb-3 fs-4 ">
+        <form action="/blogs/edit/<%= locals.blog._id%>?_method=PUT" method="post" >
+        <%- include("../partials/form-fields.ejs") %>
+        </form>
+    </div>
+    
+</body>
+</html>
